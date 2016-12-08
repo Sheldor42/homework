@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{scrextend}
+\usepackage{float}
+\usepackage{graphicx}
+\newsavebox{\mybox}
+%\addtolength{\hoffset}{-1.5cm}
+\addtolength{\voffset}{-2cm}
+%\addtolength{\topmargin}{-2cm}
+%\addtolength{\textwidth}{2.5cm}
+%\addtolength{\textheight}{7cm}
+\title{Stochastics Methods + Lab - homework\\[0.5cm]
+\author{Norman Heil}
+\large Assignment Sheet form 2016-10-04}
+\date{Oktober 4th. 2016}
+\maketitle
+\begin{document}
+\section*{3. Show that an American call option should be exercised at expiration for maximal profit.}
+Looking at the binomial pricing model, which for some $N:\forall n>N\element \in \mathbb{N}$ the price $x_n$ converges uniformly to the true price calculated using the Black–Scholes formula, one can easily see that for a call option after each time step which is not the final time step, there exist a possible outcome with an higher yield.\\
+
+Going away from the binomial tree model, one might also argue that for maximum profit assuming a monotonically increasing yield over time, assumed by the model of a risk neutral world and the given interest rate $r$, as long as $r$ lies above the rate of inflation, exercising a call option later would be more preferable than exercising the option earlier. This is, as one can see that the sequence of the true yield $X'$ over $n'$ options $X_{n'}' \longrightarrow X_{n'}''$ where $X''$ is the theoretical yield over $n'$ options calculated using the risk free interest rate $r$.
+
+
+\end{document}

@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{Stochastics methods lab - homework\\[0.5cm]
+\large Problem 2016-09-13 number 5}
+
+\author{Norman Heil}
+\date{September 20th. 2016}
+
+\begin{document}
+
+\maketitle
+\section{Problem}
+Suppose the coupon rate for a level coupon bond is the same as the market rate. Show that this bond will be sold at par.
+\subsection{Abstract}
+A coupon bond issued to an investor typically yields a semi annular payment according to the face value, which does not change over time, and the annular interest rate. Thereby the issuer pays the investor the same amount each time a payment is due, until maturity is reached. \\
+Thereby the yield can be calculated by:
+\begin{equation}
+G=\sum_{i=1}^{N} FV* YI
+\end{equation}
+where $FV$ stands for Face Value, $N$ is the amount of years, $G$ is the yield and $YI$ is the yearly interest rate.\\
+Then the coupon rate $C$ is given by:
+\begin{equation}
+C=\frac{G}{FV}=N* YI
+\end{equation}
+Now assuming $C$ equals the market rate $k$, the real value of the bond $R$ can be calculated by:
+\begin{align}
+    R=C*FV&&R=k*FV \label{1}
+\end{align}
+now as $C=k$, \ref{1} implies $C*FV=k*FV$, thus the bond is sold at par, as the yield equals its coupon.
+
+\end{document}

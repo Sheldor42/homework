@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,amsmath,amsfonts}
+
+\begin{document}
+
+\title{Stochastic Methods + Lab}
+\author{Session 6}
+\date{September 20, 2016}
+\maketitle
+
+\noindent\emph{Notes:} 
+\begin{itemize}
+\item The computational work is to be submitted up to
+one week after the session via \texttt{git}.  
+\item For this task sheet, it
+is sufficient to submit the code so long as it runs and produces the
+requested output. 
+
+\item Please do not submit \textsf{ipython} notebooks.  If you prefer
+working in the ipython shell, you can convert the notebook to a
+standalone script writing
+\begin{verbatim}
+  ipython3 nbconvert --to python filename.ipynb
+\end{verbatim}
+or 
+\begin{verbatim}
+  jupyter nbconvert --to python filename.ipynb
+\end{verbatim}
+(depending on your installation).  Make sure the file runs; you may
+have to add print statements expressions resulting from output cells.
+
+\item Make sure that your submission runs the requested test case.  
+
+\item The theoretical questions can be submitted handwritten on paper.
+\end{itemize}
+
+\begin{enumerate}
+\item Consider a 10-year level coupon bond with an annual coupon rate
+of 8\% compounded annually and a par value of EUR 1\,000.  Plot the
+price of the bond vs.\ the yield.
+
+\item Plot price volatility vs.\ time to maturity for level coupon
+bonds with annual coupon rates of 2\%, 6\%, and 12\% paid semiannually.
+Assume a yield of 6\% and a par value of EUR 1\,000.  To see the
+different volatility behaviors, take a range from 0 up to 100 years to
+maturity. 
+
+\item Plot the bond value (forward value) of an 8\% 15-year bond
+compounded semi-annually vs.\ years to maturity under three rate
+scenarios: (a) the interest rate decreases instantaneously to 6\%, (b)
+the interest rate remains unchanged, and (c) the interest rate
+increases instantaneously to 10\%.
+
+\emph{Note:} The forward value of the bond required here is the value
+of the bond at time zero based on the new market interest rate times
+the compounded interest factors corresponding to different times to
+maturity.
+
+\item Plot the future value of a 30-year bond at a coupon rate of 10\%
+compounded annually after a 10-year horizon as a function of yield.
+Find the minimum of the horizon price numerically, e.g., using
+\texttt{scipy.optimize.brent}. 
+
+\item Visit the web site of the European Central Bank (ECB) and look
+for their yield curve data.  What data is contained in the files?
+
+(This is to be submitted as a written answer!)
+
+\item The ECB publishes spot rate data in a downloadable CSV file.
+Find online documentation on how to read CSV files, read in the ECB
+spot rates, and plot the yield curve.
+
+\item Write out a consistent set of expressions for the Macaulay
+duration and the immunization of a level coupon bond assuming
+continuous compounding of interest.
+
+\item Suppose you want to immunize a liability at time $D$ with
+two bonds of Macaulay durations $D_1$ and $D_2$, respectively.  Show
+that the fraction $\omega_1$ and $\omega_2$ of the two bonds in the
+initial portfolio need to satisfy
+\begin{gather*}
+  \omega_1 + \omega_2 = 1 \,, \\
+  \omega_1 \, D_1 + \omega_2 \, D_2 = D \,.
+\end{gather*}
+
+\end{enumerate}
+
+
+\end{document}
+

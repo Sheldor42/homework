@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,amsmath,amsfonts,graphicx}
+
+\begin{document}
+
+\title{Stochastic Methods + Lab}
+\author{Session 17}
+\date{November 1, 2016}
+\maketitle
+
+\def\e{\mathrm e}
+\def\d{\mathrm d}
+
+
+Let $X=X(t)$ be an It\=o process, i.e., a solution of the
+stochastic differential equation
+\[
+  \d X = f(X,t) \, \d t + g(X,t) \, \d W \,,
+\]
+interpreted in the sense of the It\=o stochastic integral.  Let
+$F(X,t)$ be twice continuously differentiable.
+Then the stochastic chain rule, also known as the It\=o formula, reads
+\[
+  \d F(X,t)
+  = \biggl(
+      \frac{\partial F(X,t)}{\partial t}
+      + f(X,t) \, \frac{\partial F(X,t)}{\partial X}
+      + \frac12 \, g(X,t)^2 \, \frac{\partial^2 F(X,t)}{\partial X^2}
+    \biggr) \, \d t
+  + g(X,t) \, \frac{\partial F(X,t)}{\partial X} \, \d W \,.
+\]
+
+Verify the It\=o formula numerically for the example when $X(t)$ is
+geometric Brownian motion with $\mu = 0.2$ and $\sigma=2.0$, and where
+\[
+  F(X,t) = (1+t) \, \sqrt X \,.
+\]
+
+\emph{Hint:} You have to compare direct evaluation of this expression
+with a numerical solution of the stochastic differential equation
+which you obtain from the It\=o formula.
+
+\end{document}
+

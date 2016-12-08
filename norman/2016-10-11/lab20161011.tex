@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,amsmath,amsfonts}
+
+\begin{document}
+
+\title{Stochastic Methods + Lab}
+\author{Session 12}
+\date{October 11, 2016}
+\maketitle
+
+\begin{enumerate}
+
+
+\item Plot the binomial distribution 
+\[
+  b(j,n;p) = p^j \, q^{n-j} \, \binom{n}{j}
+\]
+where $q=1-p$ into a coordinate system where the values on the
+$x$-axis correspond to $j$ according to
+\[
+  x_j = \frac{j-np}{\sqrt{npq}}
+\]
+and the $y$-values are given by $\sqrt{npq}\, b(j,n;p)$.
+
+Compare the graphs for $n=10$, $n=100$, and the graph of the standard
+Gaussian
+\[
+  \phi(x) = \frac1{\sqrt{2\pi}} \, \mathrm{e}^{-x^2/2}
+\]
+in the same plot.  Comment \emph{briefly} on what you see.
+
+
+\item Generate $N=10\,000$ samples of the binomial distribution
+(number of successes in $n$ independent trials).  Rescale the samples
+via
+\[
+  X = \frac{J- \mathbb E[J]}{\sqrt{\operatorname{Var}[J]}}
+\]
+where you use the sample mean to approximate $\mathbb E[J]$ and the
+sample variance to approximate $\sqrt{\operatorname{Var}[J]}$.  (These
+can be computed via the \textsf{numpy}-functions \verb+mean()+ and
+$\verb+std()+.$)
+
+Generate $N=10\,000$ samples of the standard normal distribution.
+
+Plot the sorted samples for $X$ vs.\ the sorted samples for the
+standard normal distribution.  Comment briefly on what you see.  
+
+\emph{Note:} This is called a QQ-plot and is more generally used to
+empirically compare two probability distributions.
+
+\item Compute an ensemble of standard Brownian paths $W(t)$ over the
+interval $[0,1]$ partitioned into $N=500$ time steps.  Plot the
+empirically determied mean and standard deviation of the ensemble as a
+function of time.
+
+\item Similarly, compute an ensemble of geometric Brownian paths
+\[
+  S(t) = \exp((\mu - \tfrac12 \, \sigma^2)\, t + \sigma \, W(t))
+\]
+with $\mu=0.05$ and $\sigma=0.3$ and plot mean and standard deviation as
+a function of time on the interval $[0,1]$.
+
+\end{enumerate}
+
+
+
+\end{document}
+

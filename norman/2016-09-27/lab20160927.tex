@@ -1,0 +1,37 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,amsmath,amsfonts}
+
+\begin{document}
+
+\title{Stochastic Methods + Lab}
+\author{Session 8}
+\date{September 27, 2016}
+\maketitle
+
+\begin{enumerate}
+\item Implement a function
+\begin{verbatim}
+  binomial_tree (payoff, n, u, d, rp, S0)
+\end{verbatim}
+where \verb+payoff+ is the function returning the payoff of the option
+given the current stock price at maturity, \verb+n+ is the number of
+periods to simulate, \verb+u+ the relative upward change in stock
+price in one period, \verb+d+ the relative downward change in stock
+price in one period, \verb+rp+ the risk-free period interest rate, and
+\verb+S0+ the initial stock price.
+
+\item Test your code by pricing a European call option with strike
+price $K=0.9$, risk-free interest rate $r=0.05$, and maturity time
+$T=1$ on a stock with initial stock price $S_0=1$ and annualized
+volatility $\sigma=0.3$.
+
+Use the calibration of the model explained in class, where
+\[
+  u = \frac1d = \exp \biggl( \sigma \sqrt{\frac{T}n} \biggr) \,.
+\]
+
+\end{enumerate}
+
+
+\end{document}
+

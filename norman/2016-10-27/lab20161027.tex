@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,amsmath,amsfonts}
+
+\def\e{\mathrm e}
+\def\d{\mathrm d}
+
+\begin{document}
+
+\title{Stochastic Methods + Lab}
+\author{Session 16}
+\date{October 18, 2016}
+\maketitle
+
+It is known that the stochastic differential equation
+\begin{gather*}
+  \d S(t) = \mu \, S(t) \, \d t + \sigma \, S(t) \, \d W(t) \,,
+  \tag{*} \\
+  S(0) = S_0
+\end{gather*}
+is solved by geometric Brownian motion
+\[
+  S(t) = S_0 \, \e^{(\mu - \sigma^2/2) \, t + \sigma \, W(t)} \,.
+\]
+\begin{enumerate}
+\item Use the Euler--Maruyama method to solve (*) with $\mu=2$,
+$\sigma=1$, and $S_0=1$ up to final time $T=1$.  Compare pathwise
+against the exact solution.
+
+\item Find the \emph{strong order of convergence}, i.e., an exponent
+$p$ such that
+\[
+  \mathbb{E} [\lvert S_N - S(T) \rvert]
+  \leq c \, \Delta t^p \,
+\]
+where $S(T)$ denotes true geometric Brownian motion and $S_N$ its
+Euler--Maruyama approximation at the final time $T$.
+
+\item Find the \emph{weak order of convergence}, i.e., an exponent $q$
+such that
+\[
+  \lvert \mathbb{E}[S_N] - \mathbb{E}[S(T)] \rvert
+  \leq c \, \Delta t^q \,.
+\]
+
+\end{enumerate}
+
+
+\end{document}
+

@@ -1,0 +1,251 @@
+\documentclass[twocolumn,secnumarabic,rmp]{revtex4}
+\usepackage{html}
+
+\begin{document}
+
+\title{\textsf{git} cheatsheet for students}
+\author{Marcel Oliver}
+\date{September 8, 2016}
+\maketitle
+
+\section{First time setup}
+\label{s.first}
+
+To begin, install \textsf{git} on your machine; google for the best
+install method for your operating system.  Then set a few global
+variables, at a minimum, you should type
+\begin{verbatim}
+git config --global user.name "My Name"
+git config --global user.email "xxx@yyy.zzz"
+\end{verbatim}
+(Insert your name and email address!) You might want to set a
+preferred editor (for me it's \textsf{emacs}) and color coding of
+command output.
+\begin{verbatim}
+git config --global core.editor /usr/bin/emacs
+git config --global color.ui "auto"
+\end{verbatim}
+There are other more advanced configuration options not necessary for
+a quick start.
+
+\section{Fork the course repository}
+
+The public course repository is hosted at
+\begin{center}
+  \url{https://bitbucket.org/marcel_oliver/acm221/}
+\end{center}
+Visit this web page.  If you do not have a \textsf{bitbucket} account,
+register for one.  Click the ``$\cdots$'' menu on the left, select
+``Fork'', and select ``This is a private repository''.  Click ``Fork
+repository'' to proceed.  Now select the cog icon (``Settings'') and
+go to ``Access management''.  Add me (username \verb+marcel_oliver+)
+and the Teaching Assistant (username \texttt{kpjkpj}) to the list of users
+with \emph{write access}.  Now you are done on the server.
+
+On your local machine, go to the directory where you want to create
+the local repository and type
+\begin{verbatim}
+git clone \
+ssh://git@bitbucket.org:username/acm221.git
+\end{verbatim}
+You should now see a new directory named \texttt{acm221}; enter this
+directory.  Now type
+\begin{verbatim}
+git remote add instructor \
+ssh://git@bitbucket.org:marcel_oliver/acm221.git
+\end{verbatim}
+This sets up \texttt{instructor} as a name for my public course
+repository.  In particular, it allows you to pull all updates to the
+class material and assignments by issueing
+\begin{verbatim}
+git pull instructor master
+\end{verbatim}
+any time in the future. 
+
+
+
+\section{Local work cycle}
+
+The following describes a standard \textsf{git} work cycle which
+allows you to keep a record of the changes you make.  To later push
+to the remote repository, you need to do this at least once.
+\begin{enumerate}
+\item Do some work (add, modify, or delete files).
+\item Double-check your work: \\
+\verb+git status+ displays which files
+have changed, \\
+\verb+git diff [filename]+ gives details of changes.
+\item \verb+git add filename+ or \verb+git add .+ will stage some or
+all files for the commit.
+\item \verb+git commit -m "Commit Message"+ performs
+the actual commit.  \\
+\verb+git commit -am "Commit Message"+ is a shortcut
+for the last two steps \emph{only} if no new files need to be
+added. 
+\end{enumerate}
+
+\section{Pushing and pulling}
+
+When you want to share your work (or submit your homework), push it to
+the server saying
+\begin{verbatim}
+git push 
+\end{verbatim}
+Vice versa, if the server branch has work that you want to merge into
+your local branch, say
+\begin{verbatim}
+git pull
+\end{verbatim}
+
+\section{Branching}
+
+In the standard workflow for this class, you can work on the one
+branch named \texttt{acm221} which you had initially forked from the
+instructor's repository.  
+
+Often, it is useful to work with several branches, e.g.\ to try out
+several options before settling for the best solution.  One of the
+easiest ways to create a new branch is to write
+\begin{verbatim}
+git checkout -b lisa
+\end{verbatim}
+You are now working on the new branch \texttt{lisa}.  To push it to
+the server, write, for the first time
+\begin{verbatim}
+git push origin lisa
+\end{verbatim}
+where \verb+origin+ is a short-cut referring to the server.  Subsequently,
+you can simply say \verb+git push+.  Vice versa, when you want to see
+Fred's branch \verb+fred+, you write first time
+\begin{verbatim}
+git fetch origin fred
+git checkout fred
+\end{verbatim}
+Subsequently, you can check out your local version of \verb+fred+,
+then pull:
+\begin{verbatim}
+git checkout fred
+git pull
+\end{verbatim}
+You can pull changes from other branches into your branch.  E.g., to
+pull in new changes from local branch \verb+lisa+ into your local branch
+\verb+fred+, use
+\begin{verbatim}
+git checkout fred
+git pull . lisa
+\end{verbatim}
+If the branch \verb+lisa+ you wish to pull from resides on th server
+instead, replace the last line by
+\begin{verbatim}
+git pull origin lisa
+\end{verbatim}
+If you need more fine-grained control, separate the \verb+pull+ into a
+\verb+fetch+ followed by a \verb+merge+, see
+\url{http://longair.net/blog/2009/04/16/git-fetch-and-merge/}.
+
+To fetch all remote branches \emph{without merging}, use
+\begin{verbatim}
+git remote update
+\end{verbatim}
+This is useful for inspecting the branches that others are working on
+or downloading them for future off-line use.
+
+
+
+
+\section{Querying \textsf{git}}
+
+A list of commands for obtaining status information:
+\begin{itemize}
+\item \verb+git log+ will show the commit history of the currently
+check out branch.
+\item \verb+git status+ shows which branch you are on, which files
+have been changed, and which files are staged for commit.
+
+\item \verb+git branch+ lists all local branches.  Add the \verb+-r+
+switch for remote, or the \verb+-a+ switch for all branches
+\emph{known to your local repository}.
+
+\item \verb+git remote show origin+ lists remote branches \emph{by
+querying the server} and prints information on your local remote
+branches.   
+
+\item \verb+git config -l+ prints global configuration information.
+
+\end{itemize}
+\vfill
+\section{Deleting and resetting}
+
+\textsf{git} makes branching easy.  So you do experimental work on a
+separate branch to later merge or cherry-pick into your main branch.
+To then delete the experimental branch \verb+crazyidea+ in your local
+repository, use
+\begin{verbatim}
+git branch -d crazyidea
+\end{verbatim}
+To delete \verb+crazyidea+ on the server, use (with great
+care!)
+\begin{verbatim}
+git push origin :crazyidea
+\end{verbatim}
+(The command line interface of \textsf{git} is not known for its
+consistency.  The logic behind this seemingly crazy command is that it
+pushes an empty branch into the existing branch \verb+crazyidea+ in
+the remote location \verb+origin+.)
+
+To reset your working copy to the last commit, deleting all changes,
+use
+\begin{verbatim}
+git reset --hard HEAD
+\end{verbatim}
+
+
+
+
+\section{A note on program-generated output}
+
+To keep the repository as clean as possible, do not commit output
+which is automatically generated by programs such as {\LaTeX} or
+\textsf{Python}.  The repository is configured not to add any such
+files by default, the exclusion rules are contained in the file
+\verb+.gitignore+ in the root directory.  If you have figures or other
+documents as PDF files from external sources, for example, you should
+place them into subdirectories named \verb+figures+ or
+\verb+literature+.  
+
+In particular, to read any of the \verb+.tex+ files in the repository,
+you need to run them through \LaTeX.
+
+\section{Further reading}
+
+% While this document should provide the basics for working together
+% with \textsf{git}, there are many advanced features not covered.
+% Fortunately, the internet is full of good manuals.  I found the
+% following particularly useful.
+
+\begin{itemize}
+\item \emph{Understanding git conceptually}, an excellent
+general introduction to \textsf{git} by Charles Duan.\\
+\url{http://www.sbf5.com/~cduan/technical/git/}
+
+\item \emph{Version control with Git: resources}, a blog post
+specifically aimed at scientists with a number of useful links by
+Fernando Perez. \\
+\url{http://www.fperez.org/py4science/git.html}
+
+\item The \textsf{git} project website with comprehensive manuals and
+download instructions.\\
+\url{http://git-scm.com/}
+
+\item \emph{Git Reference} is another fairly comprehensive reference
+site. \\
+\url{http://gitref.org/}
+
+\item How to \emph{set up an ssh key for bitbucket} to never type in
+your password again. \\
+\url{https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html}
+
+\end{itemize}
+
+
+\end{document}

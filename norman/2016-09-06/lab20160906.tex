@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,amsmath,amsfonts}
+
+\begin{document}
+
+\title{Stochastic Methods + Lab}
+\author{Session 2}
+\date{September 6, 2016}
+\maketitle
+
+\noindent\emph{Note:} The work is to be submitted up to one week after
+the session via \texttt{git}.  For this task sheet, it is sufficient
+to submit the code so long as it runs and produces the
+requested output.
+
+\begin{enumerate}
+
+\item An investment is guaranteeing a cash flow $C_1, \dots, C_N$ at
+the end of each period.  The period interest rate is $y$.  Write
+python functions to compute the present value of the investment in
+three different ways:
+\begin{enumerate}
+\item Using Numpy arrays;
+\item Using the \texttt{polyval} function;
+\item By writing an explicit Python loop.
+\end{enumerate}
+Compare the run-time of the three implementations on the following
+test case:
+\begin{verbatim}
+  C = 100.0 * arange(3,2003)
+  y = 0.05
+\end{verbatim}
+
+% \item (From Ross, p.\ 45.) An individual who plans to retire in 20
+% years has decided to put an amount $A$ in the bank at the beginning of
+% each of the next 240 months, after which she will withdraw EUR 1000
+% at the beginning of each of the following 360 months.  Assuming a
+% nominal yearly interest rate of 6\% compounded monthly, how large does
+% $A$ need to be?
+
+\item Write a Python program which prints out an amortization schedule
+for a mortgage. 
+
+The program should take as input the nominal yearly interest
+rate $r$, the amount of the loan $P$, the number of compounding
+periods per annum $m$, and the term of the mortgage $n$ in years.
+Assume that the mortgage is fully redeemed at the end of the term.
+
+The program should compute the monthly payment, the effective annual
+interest rate, and a detailed payment schedule listing, for each
+month showing the interest and principal parts of the payment and the
+remaining principal.
+
+Run your program with $P=250\,000$, $r=0.08$,
+$m=12$, and $n=15$.
+
+% \item Find a closed form formula for the remaining principal right
+% after the $k$th mortgage payment.
+
+\item An investment sold at price $P$ is guaranteeing a cash flow
+$C_1, \dots, C_N$ at the end of each year.  Write a program to compute
+its IRR (internal rate of return).
+
+Run your program on the following test case:
+\begin{verbatim}
+  N = 20
+  C = 100.0 * arange(3,N+3)
+  P = 20000.0
+\end{verbatim}
+
+\end{enumerate}
+
+
+\end{document}
+

@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,amsmath,amsfonts}
+
+\def\e{\mathrm e}
+\def\d{\mathrm d}
+
+\begin{document}
+
+\title{Stochastic Methods + Lab}
+\author{Session 14}
+\date{October 18, 2016}
+\maketitle
+
+\begin{enumerate}
+
+
+\item On the previous task sheet, you computed an ensemble of
+geometric Brownian paths
+\[
+  S(t) = \exp((\mu - \tfrac12 \, \sigma^2)\, t + \sigma \, W(t))
+\]
+with $\mu=0.05$ and $\sigma=0.3$ and plot mean and standard deviation as
+a function of time on the interval $[0,1]$.
+
+Now add, into the same coordinate system, mean and standard deviation
+of the stock price paths which underlie the binomial tree model with
+$N=500$ time steps calibrated with the same set of parameters $r=\mu$
+and annualized volatility $\sigma$.  What do you see?
+
+\item Use the paths so obtained in a Monte--Carlo valuation of a
+European call option with $K=0.9$, time of maturity $T=1.0$ and risk
+free rate $r=\mu$.  Compare your result against the Black--Scholes
+price by plotting the deviation from the Black--Scholes price against
+the number of samples in a doubly logarithmic plot.
+
+What is the order of the Monte--Carlo method as a function of the
+number of samples?
+
+\item Look up stock option quotes for European call options on the
+stock of a major corporation.  Plot the implied volatility vs.\ the
+strike price, while the time to maturity is fixed.  (The applicable
+interest rate is the spot rate for zero coupon bonds of the same
+maturity.)
+
+\item Approximate the It\=o integral
+\[
+  I = \int_0^T X(t-) \, \d W(t)
+    = \lim_{N\to\infty} \sum_{i=0}^{N-1} X(t_i) \, (W(t_{i+1}) -
+    W(t_i))
+\]
+and the Stratonovich integral
+\[
+  W = \int_0^T X(t) \, \d W(t)
+    = \lim_{N\to\infty} 
+      \sum_{i=0}^{N-1} X\Bigl(\frac{t_{i+1}+t_i}2 \Bigr) 
+      \, (W(t_{i+1}) - W(t_i)) \,,
+\]
+where $W(t)$ denotes standard Brownian motion, $t_i = i \, \Delta t$
+with $\Delta t = T/N$, and we choose, as an example, $X(t)=W(t)$.   Do
+they converge to the same value as $N \to \infty$?
+
+\end{enumerate}
+
+
+
+\end{document}
+

@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,amsmath,amsfonts}
+
+\begin{document}
+
+\title{Stochastic Methods + Lab}
+\author{Session 10}
+\date{October 4, 2016}
+\maketitle
+
+\begin{enumerate}
+
+
+\item Rewrite your code so that it stores the option value at each
+node of the tree.  Then visualize the tree using \texttt{imshow}.
+Think about an appropriate color map, how to mask the missing values
+(Hint: use Numpy's masked arrays), and how to best map the computed
+values to pixel coordinates.
+
+\item The price of a European Call option with current stock price
+$S$, strike price $K$, annualized volatility $\sigma$, annual
+risk-free interest rate $r$, and maturity time $T$ can be computed
+explicitly from the Black--Scholes formula
+\begin{equation*}
+  C = S \, \Phi(x) - K \, \mathrm{e}^{-rT} \, \Phi(x-\sigma \sqrt T) \,,
+\end{equation*}
+where 
+\begin{equation*}
+  x = \frac{\ln(S/K) + (r + \sigma^2/2) \, T}{\sigma \sqrt T}
+\end{equation*}
+and $\Phi$ denotes the cumulative distribution function of the
+standard normal distribution with mean zero and variance one.
+
+Compare your call option prices from the binomial tree model against
+those computed by the Black--Scholes formula.  Does the error scale
+like a power of $N$?  (Plot the logarithm of the error vs.\ $N$.  Do
+you obtain a straight line?)
+
+\item Show that an American call option should be exercised at
+expiration for maximal profit.
+
+\item Modify your binomial tree algorithm to price an American put
+option (the holder may exercise the option at any time before
+expiration).  Is the price of an American put higher or lower than
+that that of a European put with otherwise identical parameters?
+
+\end{enumerate}
+
+
+\end{document}
+
